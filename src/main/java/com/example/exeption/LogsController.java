@@ -18,7 +18,7 @@ public class LogsController {
     }
     @GetMapping
     public String hello(){
-        return "ti zashel v obrabotky isklucheniy Logs";
+        return "you've logged into exception handling";
     }
     @GetMapping(path = "/logs")
     public String helloLogs(@RequestParam(name = "login") String userLogin,
@@ -27,13 +27,13 @@ public class LogsController {
        try{
            return serviceLogs.exeptionLogs(userLogin, userPassword, userConfirmPassword);
        } catch (WrongLoginExceptions e){
-           return "dlina logina bolee 20 simvolov";
+           return "login length is more than 20 characters";
        } catch (WrongLengthPasswordExceptions e){
-           return "dlina parolya bolee 20 simvolov";
+           return "password length is more than 20 characters";
        } catch (WrongPasswordException e){
-           return "paroli ne sovpadaut";
+           return "passwords dont match";
        }catch (WrongSimvolException e){
-           return "simvol ne korrekten";
+           return "the symbol is not correct";
        }
     }
 }
